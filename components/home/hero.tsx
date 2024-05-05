@@ -9,7 +9,7 @@ const navigation = [
 
 export default function Hero() {
   return (
-    <section className="container px-6 pt-14 lg:px-8">
+    <section className="container  min-h-screen px-6 pt-14 lg:px-8">
       {/* <div
           className="absolute inset-x-0 -top-40 -z-10 transform-gpu overflow-hidden blur-3xl sm:-top-80"
           aria-hidden="true"

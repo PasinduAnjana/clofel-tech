@@ -30,7 +30,7 @@ export default function RootLayout({
         <Suspense>
           <SmoothScroller />
         </Suspense>
-        <div className="mx-auto  max-w-screen-2xl"> {children}</div>
+        <div className="mx-auto"> {children}</div>
       </body>
     </html>
   );
