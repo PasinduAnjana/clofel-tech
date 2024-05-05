@@ -1,4 +1,7 @@
-import shashimalImg from "@/public/img/team/sashimal.jpg";
+import shashimalImg from "@/public/img/team/sashimal.webp";
+import savinduImg from "@/public/img/team/savindu.jpg";
+import yasasImg from "@/public/img/team/yasas.jpg";
+import hashenImg from "@/public/img/team/hashen.jpg";
 import Image from "next/image";
 
 const people = [
@@ -10,17 +13,17 @@ const people = [
   {
     name: "Savindu Rachinthana",
     role: "COO",
-    imageUrl: shashimalImg,
+    imageUrl: savinduImg,
   },
   {
     name: "Yasas Sadeepa",
     role: "CTO",
-    imageUrl: shashimalImg,
+    imageUrl: yasasImg,
   },
   {
     name: "Hashen Udara",
     role: "CPO",
-    imageUrl: shashimalImg,
+    imageUrl: hashenImg,
   },
 ];
 
@@ -33,8 +36,7 @@ export default function Team() {
             Meet our leadership
           </h2>
           <p className="mt-6 text-lg leading-8 text-gray-600">
-            Libero fames augue nisl porttitor nisi, quis. Id ac elit odio vitae
-            elementum enim vitae ullamcorper suspendisse.
+            We are strong team who brings innovative ideas into production.
           </p>
         </div>
         <ul
@@ -45,17 +47,17 @@ export default function Team() {
             <li key={person.name}>
               <div className="flex items-center gap-x-6">
                 <Image
-                  className=" size-20 rounded-full object-cover"
+                  className=" size-20 rounded-full object-cover  grayscale"
                   src={person.imageUrl}
                   alt={person.name}
-                  //   width={800}
-                  //   height={600}
+                  width={100}
+                  height={100}
                 />
                 <div>
-                  <h3 className="text-base font-semibold leading-7 tracking-tight text-gray-900">
+                  <h3 className="text-base font-semibold leading-7 tracking-tight text-background/70">
                     {person.name}
                   </h3>
-                  <p className="text-sm font-semibold leading-6 text-indigo-600">
+                  <p className="text-sm font-semibold leading-6 text-background/50">
                     {person.role}
                   </p>
                 </div>

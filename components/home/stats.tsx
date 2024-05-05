@@ -1,15 +1,15 @@
 import { Counter } from "../common/counter";
 
 const stats = [
-  { id: 1, name: "Creators on the platform", value: 8000 },
-  { id: 2, name: "Flat platform fee", value: 3 },
-  { id: 3, name: "Uptime guarantee", value: 99.9 },
-  { id: 4, name: "Paid out to creators", value: 70 },
+  { id: 1, name: "Customer Satisfaction Achieved", value: 99.9, suffix: "%" },
+  { id: 2, name: "Trusted Clients", value: 5, suffix: "+" },
+  { id: 3, name: "Projects Successfully Completed", value: 12, suffix: "+" },
+  { id: 4, name: "Average development time", value: 90, suffix: "Days" },
 ];
 
 export default function Stats() {
   return (
-    <section className="relative isolate overflow-hidden py-24 sm:py-32">
+    <section className="relative isolate overflow-hidden min-h-screen py-32 sm:py-48">
       <img
         src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2850&q=80&blend=111827&blend-mode=multiply&sat=-100&exp=15"
         alt=""
@@ -17,11 +17,12 @@ export default function Stats() {
       />
       <div className="relative mx-auto max-w-7xl px-6 lg:px-8">
         <div className="mx-auto max-w-none lg:mx-0 lg:max-w-3xl">
-          <h2 className="text-base font-semibold leading-8  text-primary">
-            Our track record
+          <h2 className="text-base font-semibold  leading-8  text-foreground">
+            Check recent achievements
           </h2>
           <p className="mt-2 text-3xl font-bold tracking-tight  text-foreground sm:text-6xl">
-            We provide the effective ideas that grow businesses.
+            We provide the effective ideas that{" "}
+            <span className=" text-brand-600">grow businesses</span>
           </p>
           <p className="mt-6 text-lg leading-8 text-muted-foreground">
             Lorem ipsum, dolor sit amet consectetur adipisicing elit. Maiores
@@ -37,7 +38,8 @@ export default function Stats() {
             >
               <dt className="text-sm leading-6">{stat.name}</dt>
               <dd className="order-first text-5xl font-semibold text-foreground tracking-tight">
-                <Counter start={0} end={stat.value} duration={2000} />
+                <Counter start={0} end={stat.value} duration={2000} />{" "}
+                {stat.suffix}
               </dd>
             </div>
           ))}
