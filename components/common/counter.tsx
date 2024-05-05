@@ -52,5 +52,5 @@ export const Counter = ({ start, end, duration }: counterTypes) => {
     }
   }, [start, end, duration]);
 
-  return <span>{currentCount}</span>;
+  return <span id="counter">{currentCount}</span>;
 };

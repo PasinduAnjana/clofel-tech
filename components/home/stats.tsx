@@ -1,4 +1,4 @@
-import { Counter } from "./counter";
+import { Counter } from "../common/counter";
 
 const stats = [
   { id: 1, name: "Creators on the platform", value: 8000 },

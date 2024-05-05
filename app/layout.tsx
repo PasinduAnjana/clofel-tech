@@ -2,6 +2,8 @@ import type { Metadata } from "next";
 import { Plus_Jakarta_Sans as FontSans } from "next/font/google";
 import "./globals.css";
 import { cn } from "@/lib/utils";
+import { Suspense } from "react";
+import SmoothScroller from "@/components/common/lenis";
 
 const fontSans = FontSans({
   subsets: ["latin"],
@@ -25,6 +27,9 @@ export default function RootLayout({
           fontSans.variable
         )}
       >
+        <Suspense>
+          <SmoothScroller />
+        </Suspense>
         <div className="mx-auto  max-w-screen-2xl"> {children}</div>
       </body>
     </html>
