@@ -1,4 +1,5 @@
 import Hero from "@/components/home/hero";
+import Stats from "@/components/home/stats";
 import TechLogos from "@/components/home/tech-logo";
 
 export default function Home() {
@@ -6,6 +7,7 @@ export default function Home() {
     <main>
       <Hero />
       <TechLogos />
+      <Stats />
     </main>
   );
 }

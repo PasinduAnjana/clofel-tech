@@ -1,6 +1,6 @@
 export default function TechLogos() {
   return (
-    <div className="">
+    <section className="container mb-16">
       <div className="mx-auto max-w-6xl px-6 lg:px-8">
         <h2 className="text-center  leading-8 text-foreground ">
           We’re Experts in Next-Gen Technologies
@@ -43,6 +43,6 @@ export default function TechLogos() {
           />
         </div>
       </div>
-    </div>
+    </section>
   );
 }
