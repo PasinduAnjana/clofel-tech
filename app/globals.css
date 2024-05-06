@@ -74,3 +74,20 @@
     @apply bg-background text-foreground;
   }
 }
+
+.title-anim a {
+  background-image: linear-gradient(currentColor, currentColor);
+  background-size: 0 1px;
+  background-position: 0 100%;
+  background-repeat: no-repeat;
+  transition: background-size 0.5s cubic-bezier(0, 0.57, 0.55, 1);
+  will-change: background-size;
+}
+
+.title-anim {
+  transition: all 0.27s cubic-bezier(0, 0, 0.58, 1);
+}
+
+.title-anim a:hover {
+  background-size: 100% 1px;
+}
