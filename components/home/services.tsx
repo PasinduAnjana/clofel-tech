@@ -14,11 +14,39 @@ const tiers = [
     name: "Artificial Intelligence",
     id: "AI",
     href: "#",
-    featured: true,
+    featured: false,
     description:
       "We harness the power of Artificial Intelligence (AI) & Machine Learning (ML) to revolutionize the way businesses operate. Our experts specializes in developing AI-powered solutions that automate processes, analyze data, and provide valuable insights. Whether you need natural language processing, image recognition, or predictive analytics, we have the expertise to turn your AI ambitions into reality.",
 
     price: { monthly: "$60", annually: "$576" },
+  },
+
+  {
+    name: "Data analysis",
+    id: "IoT1",
+    href: "#",
+    featured: false,
+    description:
+      "Experience the future of industry with our cutting-edge IIOT solutions. From smart sensors to advanced analytics, we empower businesses to optimize operations, increase efficiency, and unlock new possibilities in Industry 5.0 . Discover how our innovative IIOT technologies can propel your business forward.",
+    price: { monthly: "$30", annually: "$288" },
+  },
+  {
+    name: "Cloud Services",
+    id: "IoT2",
+    href: "#",
+    featured: false,
+    description:
+      "Experience the future of industry with our cutting-edge IIOT solutions. From smart sensors to advanced analytics, we empower businesses to optimize operations, increase efficiency, and unlock new possibilities in Industry 5.0 . Discover how our innovative IIOT technologies can propel your business forward.",
+    price: { monthly: "$30", annually: "$288" },
+  },
+  {
+    name: "Cyber Security",
+    id: "IoT3",
+    href: "#",
+    featured: false,
+    description:
+      "Experience the future of industry with our cutting-edge IIOT solutions. From smart sensors to advanced analytics, we empower businesses to optimize operations, increase efficiency, and unlock new possibilities in Industry 5.0 . Discover how our innovative IIOT technologies can propel your business forward.",
+    price: { monthly: "$30", annually: "$288" },
   },
   {
     name: "IoT Solutions",
@@ -79,9 +107,9 @@ export default function Services() {
                 key={tier.id}
                 className={classNames(
                   tier.featured
-                    ? "z-10  bg-foreground shadow-xl ring-1 ring-gray-900/5"
+                    ? "z-10   bg-foreground shadow-xl ring-1 ring-gray-900/5"
                     : "bg-background ring-1 ring-white/10 lg:bg-transparent lg:pb-14 lg:ring-0",
-                  "relative rounded-2xl"
+                  "relative  rounded-2xl"
                 )}
               >
                 <div className="p-8 lg:pt-12 xl:p-10 xl:pt-14">
@@ -134,9 +162,9 @@ export default function Services() {
           </div>
         </div>
       </div>
-      <div className="relative bg-white border-t border-background/10">
+      {/* <div className="relative bg-white border-t border-background/10">
         <div className="mx-auto max-w-7xl px-6 py-8 sm:py-16 lg:px-8"></div>
-      </div>
+      </div> */}
     </div>
   );
 }

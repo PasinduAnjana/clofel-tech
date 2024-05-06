@@ -1,3 +1,4 @@
+import CaseStudies from "@/components/home/case-studies";
 import Footer from "@/components/home/footer";
 import Hero from "@/components/home/hero";
 import OperatingModel from "@/components/home/operating-model";
@@ -6,6 +7,7 @@ import Stats from "@/components/home/stats";
 import Team from "@/components/home/team";
 import TechLogos from "@/components/home/tech-logo";
 import Testimonials from "@/components/home/testimonials";
+import Workflow from "@/components/home/workflow";
 import { FloatingNav } from "@/components/ui/floating-navbar";
 
 export default function Home() {
@@ -39,7 +41,8 @@ export default function Home() {
         <Services />
         <Team />
         <OperatingModel />
-
+        <Workflow />
+        <CaseStudies />
         <Testimonials />
         <Footer />
       </main>
