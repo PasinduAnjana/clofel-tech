@@ -11,6 +11,7 @@ import Image from "next/image";
 import Logo from "@/public/img/logo/logo.svg";
 import { cn } from "@/lib/utils";
 import { Button } from "../ui/button";
+import MobileNav from "./mobile-nav";
 export const FloatingNav = ({
   navItems,
   className,
@@ -18,9 +19,6 @@ export const FloatingNav = ({
   navItems: {
     name: string;
     link: string;
-    icon?: JSX.Element;
-    sm?: boolean;
-    lg?: boolean;
   }[];
   className?: string;
 }) => {
@@ -60,7 +58,7 @@ export const FloatingNav = ({
           duration: 0.2,
         }}
         className={cn(
-          "flex max-w-fit  fixed top-10 inset-x-0 mx-auto    bg-muted/90 backdrop-blur-md rounded-2xl  shadow-[0px_2px_3px_-1px_rgba(0,0,0,0.1),0px_1px_0px_0px_rgba(25,28,33,0.02),0px_0px_0px_1px_rgba(25,28,33,0.08)] z-[5000] pr-2 pl-8 py-2  items-center justify-center space-x-4",
+          "flex max-w-[calc(100%-1.5rem)]  md:max-w-fit fixed top-4 inset-x-0 mx-auto    bg-muted/90 backdrop-blur-md rounded-2xl  shadow-[0px_2px_3px_-1px_rgba(0,0,0,0.1),0px_1px_0px_0px_rgba(25,28,33,0.02),0px_0px_0px_1px_rgba(25,28,33,0.08)] z-[5000] pr-2 pl-8 py-2  items-center  justify-between space-x-4",
           className
         )}
       >
@@ -81,19 +79,22 @@ export const FloatingNav = ({
             href={navItem.link}
             data-btn-animate="y"
             className={cn(
-              "relative  text-muted-foreground items-center text-xs font-medium flex  space-x-1 no-underline hover:no-underline hover:text-neutral-300"
+              "relative  hidden md:flex text-muted-foreground items-center text-xs font-medium   space-x-1 no-underline hover:no-underline hover:text-neutral-300"
             )}
           >
             <span className="block sm:hidden ">{navItem.icon}</span>
             <span className=" block text-sm no-underline">{navItem.name}</span>
           </Link>
         ))}
-        <Button
-          className=" bg-transparent rounded-xl border border-white/10"
-          variant={"outline"}
-        >
-          Contact us
-        </Button>
+        <div className=" flex items-center space-x-2">
+          <Button
+            className=" bg-transparent rounded-xl border border-white/10"
+            variant={"outline"}
+          >
+            Contact us
+          </Button>
+          <MobileNav navItems={navItems} />
+        </div>
       </motion.div>
     </AnimatePresence>
   );

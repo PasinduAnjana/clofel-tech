@@ -15,20 +15,14 @@ export default function Home() {
     {
       name: "Home",
       link: "/",
-      sm: true,
-      lg: true,
     },
     {
       name: "Services",
       link: "#services",
-      sm: true,
-      lg: false,
     },
     {
       name: "Team",
       link: "#team",
-      sm: true,
-      lg: true,
     },
   ];
   return (
