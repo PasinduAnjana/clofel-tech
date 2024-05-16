@@ -4,6 +4,7 @@ import "./globals.css";
 import { cn } from "@/lib/utils";
 import { Suspense } from "react";
 import SmoothScroller from "@/components/common/lenis";
+import { FloatingNav } from "@/components/common/floating-navbar";
 
 const fontSans = FontSans({
   subsets: ["latin"],
@@ -19,6 +20,20 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const navItems = [
+    {
+      name: "Home",
+      link: "/",
+    },
+    {
+      name: "Services",
+      link: "#services",
+    },
+    {
+      name: "Team",
+      link: "#team",
+    },
+  ];
   return (
     <html lang="en">
       <body
@@ -30,7 +45,9 @@ export default function RootLayout({
         <Suspense>
           <SmoothScroller />
         </Suspense>
-        <div className="mx-auto"> {children}</div>
+        <div className="mx-auto">
+          <FloatingNav navItems={navItems} /> {children}
+        </div>
       </body>
     </html>
   );

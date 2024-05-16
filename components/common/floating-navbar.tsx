@@ -11,6 +11,16 @@ import Image from "next/image";
 import Logo from "@/public/img/logo/logo.svg";
 import { cn } from "@/lib/utils";
 import { Button } from "../ui/button";
+import {
+  NavigationMenu,
+  NavigationMenuContent,
+  NavigationMenuItem,
+  NavigationMenuLink,
+  NavigationMenuList,
+  NavigationMenuTrigger,
+  navigationMenuTriggerStyle,
+} from "@/components/ui/navigation-menu";
+
 import MobileNav from "./mobile-nav";
 export const FloatingNav = ({
   navItems,
@@ -73,19 +83,65 @@ export const FloatingNav = ({
             />
           </a>
         </div>
-        {navItems.map((navItem: any, idx: number) => (
-          <Link
-            key={`link=${idx}`}
-            href={navItem.link}
-            data-btn-animate="y"
-            className={cn(
-              "relative  hidden md:flex text-muted-foreground items-center text-xs font-medium   space-x-1 no-underline hover:no-underline hover:text-neutral-300"
-            )}
-          >
-            <span className="block sm:hidden ">{navItem.icon}</span>
-            <span className=" block text-sm no-underline">{navItem.name}</span>
-          </Link>
-        ))}
+
+        <NavigationMenu className="hidden md:block">
+          <NavigationMenuList>
+            <NavigationMenuItem>
+              <Link href="/" legacyBehavior passHref>
+                <NavigationMenuLink className={navigationMenuTriggerStyle()}>
+                  Home
+                </NavigationMenuLink>
+              </Link>
+            </NavigationMenuItem>
+            <NavigationMenuItem>
+              <NavigationMenuTrigger>Solutions</NavigationMenuTrigger>
+              <NavigationMenuContent>
+                <ul className="grid gap-3 p-6 md:w-[400px] lg:w-[500px] lg:grid-cols-[.75fr_1fr]">
+                  <li className="row-span-3">
+                    <NavigationMenuLink asChild>
+                      <a
+                        className="flex h-full w-full select-none flex-col justify-end rounded-md bg-gradient-to-b from-muted/50 to-muted p-6 no-underline outline-none focus:shadow-md"
+                        href="/"
+                      >
+                        {/* <Icons.logo className="h-6 w-6" /> */}
+                        <div className="mb-2 mt-4 text-lg font-medium">
+                          shadcn/ui
+                        </div>
+                        <p className="text-sm leading-tight text-muted-foreground">
+                          Beautifully designed components that you can copy and
+                          paste into your apps. Accessible. Customizable. Open
+                          Source.
+                        </p>
+                      </a>
+                    </NavigationMenuLink>
+                  </li>
+                  <ListItem
+                    href="/solutions/glass-manufacturing"
+                    title="Glass Manufacturing"
+                  >
+                    Your step-by-step transition to a data and AI-driven
+                  </ListItem>
+                  <ListItem href="/docs/installation" title="Installation">
+                    How to install dependencies and structure your app.
+                  </ListItem>
+                  <ListItem
+                    href="/docs/primitives/typography"
+                    title="Typography"
+                  >
+                    Styles for headings, paragraphs, lists...etc
+                  </ListItem>
+                </ul>
+              </NavigationMenuContent>
+            </NavigationMenuItem>
+            <NavigationMenuItem>
+              <Link href="/docs" legacyBehavior passHref>
+                <NavigationMenuLink className={navigationMenuTriggerStyle()}>
+                  Services
+                </NavigationMenuLink>
+              </Link>
+            </NavigationMenuItem>
+          </NavigationMenuList>
+        </NavigationMenu>
         <div className=" flex items-center space-x-2">
           <Button
             className=" bg-transparent rounded-xl border border-white/10"
@@ -99,3 +155,29 @@ export const FloatingNav = ({
     </AnimatePresence>
   );
 };
+
+const ListItem = React.forwardRef<
+  React.ElementRef<"a">,
+  React.ComponentPropsWithoutRef<"a">
+>(({ className, title, children, ...props }, ref) => {
+  return (
+    <li>
+      <NavigationMenuLink asChild>
+        <a
+          ref={ref}
+          className={cn(
+            "block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground",
+            className
+          )}
+          {...props}
+        >
+          <div className="text-sm font-medium leading-none">{title}</div>
+          <p className="line-clamp-2 text-sm leading-snug text-muted-foreground">
+            {children}
+          </p>
+        </a>
+      </NavigationMenuLink>
+    </li>
+  );
+});
+ListItem.displayName = "ListItem";
