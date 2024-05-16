@@ -10,8 +10,8 @@ export default function Stats() {
         className="absolute rounded-xl inset-0 -z-10 h-full w-full object-cover"
       />
       <div className=" absolute w-full bg-background/50 h-full"> </div>
-      <div className=" absolute  bg-background/80 backdrop-blur-xl  rounded-3xl bottom-6 left-6 max-w-[50.8125rem] px-6 lg:px-8">
-        <div className="mx-auto max-w-none lg:mx-0 lg:max-w-3xl  py-12 px-6">
+      <div className=" absolute  bg-background/80 backdrop-blur-xl  rounded-3xl bottom-6 left-6 max-w-[55.8125rem] px-6 lg:px-8">
+        <div className="mx-auto max-w-none lg:mx-0 lg:max-w-3xl  py-8 px-4">
           <h2 className="text-xl   leading-8  text-foreground">
             Your step-by-step transition to a data and AI-driven
           </h2>
