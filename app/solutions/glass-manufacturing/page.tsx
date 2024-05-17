@@ -1,7 +1,7 @@
 import React from "react";
 import Hero from "./components/hero";
 import Challenges from "./components/challenges";
-import Features from "./components/features";
+import { Features } from "./components/features";
 
 const Page = () => {
   return (
