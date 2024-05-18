@@ -5,6 +5,7 @@ import {
   CarouselPreviousButton,
   CarouselItem,
   CarouselNext,
+  CarouselNumberSlider,
   CarouselPrevious,
 } from "@/components/ui/carousel";
 
@@ -63,7 +64,10 @@ export function Features() {
             </div>
           </div>
 
-          <div className=" col-span-7  text-black">
+          <div className=" flex flex-col col-span-7  text-black">
+            <div className=" flex w-full justify-end">
+              <CarouselNumberSlider />
+            </div>
             <CarouselPreviousButton />
           </div>
         </Carousel>

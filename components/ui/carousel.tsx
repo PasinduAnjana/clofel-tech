@@ -7,9 +7,10 @@ import useEmblaCarousel, {
 import { ArrowLeft, ArrowRight } from "lucide-react";
 
 import { cn } from "@/lib/utils";
-import { Button } from "@/components/ui/button";
+import { Button, buttonVariants } from "@/components/ui/button";
 import factoryImg from "@/public/img/solutions/HO-Glass-updated-2048x1152.png";
 import Image from "next/image";
+import { cva, type VariantProps } from "class-variance-authority";
 type CarouselApi = UseEmblaCarouselType[1];
 type UseCarouselParameters = Parameters<typeof useEmblaCarousel>;
 type CarouselOptions = UseCarouselParameters[0];
@@ -27,10 +28,19 @@ type CarouselContextProps = {
   api: ReturnType<typeof useEmblaCarousel>[1];
   scrollPrev: () => void;
   scrollNext: () => void;
+  scrollTo: (index: number) => void;
   canScrollPrev: boolean;
   canScrollNext: boolean;
   curruntSlideIndex: number;
 } & CarouselProps;
+
+interface PointerButtonProps
+  extends React.ButtonHTMLAttributes<HTMLButtonElement>,
+    VariantProps<typeof buttonVariants> {
+  asChild?: boolean;
+  slideIndex: number;
+  position: string;
+}
 
 const CarouselContext = React.createContext<CarouselContextProps | null>(null);
 
@@ -91,6 +101,14 @@ const Carousel = React.forwardRef<
       setcurruntSlideIndex(api?.selectedScrollSnap() || 0);
     }, [api]);
 
+    const scrollTo = React.useCallback(
+      (index: number) => {
+        api?.scrollTo(index);
+        setcurruntSlideIndex(api?.selectedScrollSnap() || 0);
+      },
+      [api]
+    );
+
     const handleKeyDown = React.useCallback(
       (event: React.KeyboardEvent<HTMLDivElement>) => {
         if (event.key === "ArrowLeft") {
@@ -139,6 +157,7 @@ const Carousel = React.forwardRef<
           canScrollPrev,
           canScrollNext,
           curruntSlideIndex,
+          scrollTo,
         }}
       >
         <div
@@ -241,42 +260,30 @@ const CarouselPreviousButton = React.forwardRef<
   return (
     <div className=" h-full absolute  flex flex-row justify-center items-center">
       <div className="  flex-1 inset-0 h-full absolute left-0 top-0 w-full  z-20">
-        <div className="  absolute  left-[53.2%] top-[46%]">
-          <Button
-            ref={ref}
-            variant={variant}
-            size={size}
-            className={cn(
-              "  h-8 w-8 bg-black/40 backdrop-blur rounded-full",
-              curruntSlideIndex === 4
-                ? " bg-white"
-                : "-top-12 left-1/2 -translate-x-1/2 rotate-90",
-              className
-            )}
-            onClick={() => api?.scrollTo(5)}
-            {...props}
-          >
-            5
-          </Button>
-        </div>
-        <div className="  absolute  left-[33.2%] top-[32.73%]">
-          <Button
-            ref={ref}
-            variant={variant}
-            size={size}
-            className={cn(
-              "  h-8 w-8 rounded-full",
-              curruntSlideIndex === 2
-                ? " bg-white"
-                : "-top-12 left-1/2 -translate-x-1/2 rotate-90",
-              className
-            )}
-            onClick={() => api?.scrollTo(5)}
-            {...props}
-          >
-            5
-          </Button>
-        </div>
+        <CarouselPointerButton
+          position="left-[12.2%] top-[30.73%]"
+          slideIndex={1}
+        />
+        <CarouselPointerButton
+          position="left-[53.2%] top-[46%]"
+          slideIndex={2}
+        />
+        <CarouselPointerButton
+          position="left-[30.2%] top-[36%]"
+          slideIndex={3}
+        />
+        <CarouselPointerButton
+          position="left-[65.2%] top-[25%]"
+          slideIndex={4}
+        />
+        <CarouselPointerButton
+          position="left-[63.2%] top-[61%]"
+          slideIndex={5}
+        />
+        <CarouselPointerButton
+          position="left-[78.2%] top-[40%]"
+          slideIndex={6}
+        />
       </div>
 
       <Image src={factoryImg} alt="" width={1024} height={576} />
@@ -284,6 +291,45 @@ const CarouselPreviousButton = React.forwardRef<
   );
 });
 CarouselPreviousButton.displayName = "CarouselPreviousButton";
+
+const CarouselPointerButton = React.forwardRef<
+  HTMLButtonElement,
+  PointerButtonProps
+>(
+  (
+    {
+      className,
+      slideIndex,
+      position,
+      variant = "outline",
+      size = "icon",
+      ...props
+    },
+    ref
+  ) => {
+    const { api, curruntSlideIndex, scrollTo } = useCarousel();
+    const index = slideIndex - 1;
+    return (
+      <div className={`absolute  ${position}`}>
+        <Button
+          ref={ref}
+          variant={variant}
+          size={size}
+          className={cn(
+            "  size-10 text-md rounded-full    font-semibold   duration-300  ease-linear bg-transparent",
+            curruntSlideIndex === index ? " text-foreground bg-background" : "",
+            className
+          )}
+          onClick={() => scrollTo(index)}
+          {...props}
+        >
+          0{slideIndex}
+        </Button>
+      </div>
+    );
+  }
+);
+CarouselPointerButton.displayName = "CarouselPointerButton";
 
 const CarouselNext = React.forwardRef<
   HTMLButtonElement,
@@ -314,6 +360,22 @@ const CarouselNext = React.forwardRef<
 });
 CarouselNext.displayName = "CarouselNext";
 
+const CarouselNumberSlider = React.forwardRef<
+  HTMLButtonElement,
+  React.ComponentProps<typeof Button>
+>(({ className, variant = "outline", size = "icon", ...props }, ref) => {
+  const { curruntSlideIndex } = useCarousel();
+  // console.log(api?.selectedScrollSnap());
+  return (
+    <div className=" flex py-3 px-8 font-semibold bg-muted/10 rounded-full">
+      <div>0{curruntSlideIndex}</div>
+      <span className=" h-0.5 m-[.6875rem] w-[4.125rem] rounded-full bg-background/50"></span>
+      <span>06</span>
+    </div>
+  );
+});
+CarouselNumberSlider.displayName = "CarouselNumberSlider";
+
 export {
   type CarouselApi,
   Carousel,
@@ -322,4 +384,5 @@ export {
   CarouselPrevious,
   CarouselNext,
   CarouselPreviousButton,
+  CarouselNumberSlider,
 };
