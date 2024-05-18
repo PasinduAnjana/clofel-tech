@@ -368,7 +368,7 @@ const CarouselNumberSlider = React.forwardRef<
   // console.log(api?.selectedScrollSnap());
   return (
     <div className=" flex py-3 px-8 font-semibold bg-muted/10 rounded-full">
-      <div className=" min-w-8">0{curruntSlideIndex}</div>
+      <div className=" min-w-8">0{curruntSlideIndex + 1}</div>
       <span className=" h-0.5 m-[.6875rem] w-[4.125rem] rounded-full bg-background/50"></span>
       <div className=" min-w-8">06</div>
     </div>
