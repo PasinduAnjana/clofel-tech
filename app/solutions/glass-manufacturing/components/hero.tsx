@@ -1,9 +1,10 @@
+import RevealText from "@/components/home/reveal-animation";
 import { Button } from "@/components/ui/button";
 import HeroImg from "@/public/img/solutions/Hero_Glas-Manufacturing.webp";
 import Image from "next/image";
 export default function Stats() {
   return (
-    <section className="relative mt-12 isolate overflow-hidden min-h-[95vh] ">
+    <RevealText className="relative mt-12 isolate overflow-hidden min-h-[95vh] ">
       <Image
         src={HeroImg}
         alt=""
@@ -18,6 +19,7 @@ export default function Stats() {
           <p className="mt-4 text-3xl font-semibold tracking-tight  text-foreground sm:text-6xl">
             Glass Factory
           </p>
+
           <p className="mt-8 text-lg leading-8 max-w-[32rem] text-muted-foreground">
             HappyOps supports glass makers to evolve into digital factories,
             improving Pack-to-Melt and worker productivity, reducing setup
@@ -26,6 +28,6 @@ export default function Stats() {
           <Button className=" mt-8">Contact us</Button>
         </div>
       </div>
-    </section>
+    </RevealText>
   );
 }

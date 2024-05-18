@@ -1,3 +1,5 @@
+import RevealText from "@/components/home/reveal-animation";
+
 const features = [
   {
     name: "Intricate setup processes",
@@ -25,16 +27,23 @@ function Header() {
   return (
     <div className=" px-6 py-12 sm:py-16 lg:px-8">
       <div className="mx-auto max-w-2xl text-center">
-        <p className="text-base font-semibold leading-7   text-brand-800">
-          Get the help you need
-        </p>
-        <h2 className="mt-2 text-4xl font-bold tracking-tight  text-foreground sm:text-6xl">
-          The challenges of glass production
-        </h2>
-        <p className="mt-6 text-lg leading-8 text-muted-foreground">
-          Being among the most mechanized production lines in the world, glass
-          factories deal with a lot of obstacles in their operations.
-        </p>
+        <RevealText>
+          <p className="text-base font-semibold leading-7   text-brand-800">
+            Get the help you need
+          </p>
+        </RevealText>
+
+        <RevealText>
+          <h2 className="mt-2 text-4xl font-bold tracking-tight  text-foreground sm:text-6xl">
+            The challenges of glass production
+          </h2>
+        </RevealText>
+        <RevealText>
+          <p className="mt-6 text-lg leading-8 text-muted-foreground">
+            Being among the most mechanized production lines in the world, glass
+            factories deal with a lot of obstacles in their operations.
+          </p>
+        </RevealText>
       </div>
     </div>
   );
@@ -48,7 +57,7 @@ export default function Challenges() {
         <div className="mx-auto max-w-2xl  mt-4 lg:max-w-5xl">
           <dl className="grid max-w-2xl grid-cols-1 gap-x-8 gap-y-10 lg:max-w-none  lg:grid-cols-2  ">
             {features.map((feature, index) => (
-              <div
+              <RevealText
                 key={feature.name}
                 className="relative bg-muted/50 rounded-2xl px-8 py-8 "
               >
@@ -61,7 +70,7 @@ export default function Challenges() {
                 <dd className="mt-6  text-md leading-7  text-muted-foreground">
                   {feature.description}
                 </dd>
-              </div>
+              </RevealText>
             ))}
           </dl>
         </div>
