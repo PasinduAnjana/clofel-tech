@@ -28,10 +28,10 @@ export function Features() {
           </div>
         </div>
 
-        <Carousel className="w-full max-w-screen-2xl mx-auto  grid  grid-cols-12">
+        <Carousel className="w-full max-w-screen-2xl mx-auto      md:grid  grid-cols-12">
           <div className=" col-span-5">
             <CarouselContent>
-              {Array.from({ length: 5 }).map((_, index) => (
+              {Array.from({ length: 6 }).map((_, index) => (
                 <CarouselItem key={index}>
                   <div>
                     <div>
@@ -64,11 +64,13 @@ export function Features() {
             </div>
           </div>
 
-          <div className=" flex flex-col col-span-7  text-black">
+          <div className="   flex flex-col col-span-7  text-black">
             <div className=" flex w-full justify-end">
-              <CarouselNumberSlider />
+              <CarouselNumberSlider lastSlideIndex={6} />
             </div>
-            <CarouselPreviousButton />
+            <div className="relative min-h-[350px] mt-6 ">
+              <CarouselPreviousButton />
+            </div>
           </div>
         </Carousel>
       </div>

@@ -37,9 +37,13 @@ type CarouselContextProps = {
 interface PointerButtonProps
   extends React.ButtonHTMLAttributes<HTMLButtonElement>,
     VariantProps<typeof buttonVariants> {
-  asChild?: boolean;
   slideIndex: number;
   position: string;
+}
+interface NumberSliderProps
+  extends React.ButtonHTMLAttributes<HTMLButtonElement>,
+    VariantProps<typeof buttonVariants> {
+  lastSlideIndex: number;
 }
 
 const CarouselContext = React.createContext<CarouselContextProps | null>(null);
@@ -258,8 +262,8 @@ const CarouselPreviousButton = React.forwardRef<
     useCarousel();
 
   return (
-    <div className=" h-full absolute  flex flex-row justify-center items-center">
-      <div className="  flex-1 inset-0 h-full absolute left-0 top-0 w-full  z-20">
+    <div className="  aspect-video absolute  flex flex-row justify-center items-center">
+      <div className="  flex-1 inset-0   h-full absolute left-0 top-0 w-full  z-20">
         <CarouselPointerButton
           position="left-[12.2%] top-[30.73%]"
           slideIndex={1}
@@ -362,18 +366,23 @@ CarouselNext.displayName = "CarouselNext";
 
 const CarouselNumberSlider = React.forwardRef<
   HTMLButtonElement,
-  React.ComponentProps<typeof Button>
->(({ className, variant = "outline", size = "icon", ...props }, ref) => {
-  const { curruntSlideIndex } = useCarousel();
-  // console.log(api?.selectedScrollSnap());
-  return (
-    <div className=" flex py-3 px-8 font-semibold bg-muted/10 rounded-full">
-      <div className=" min-w-8">0{curruntSlideIndex + 1}</div>
-      <span className=" h-0.5 m-[.6875rem] w-[4.125rem] rounded-full bg-background/50"></span>
-      <div className=" min-w-8">06</div>
-    </div>
-  );
-});
+  NumberSliderProps
+>(
+  (
+    { className, lastSlideIndex, variant = "outline", size = "icon", ...props },
+    ref
+  ) => {
+    const { curruntSlideIndex } = useCarousel();
+    // console.log(api?.selectedScrollSnap());
+    return (
+      <div className=" flex py-3 px-8 font-semibold bg-muted/10 rounded-full">
+        <div className=" min-w-8">0{curruntSlideIndex + 1}</div>
+        <span className=" h-0.5 m-[.6875rem] w-[4.125rem] rounded-full bg-background/50"></span>
+        <div className="min-w-8">0{lastSlideIndex}</div>
+      </div>
+    );
+  }
+);
 CarouselNumberSlider.displayName = "CarouselNumberSlider";
 
 export {
